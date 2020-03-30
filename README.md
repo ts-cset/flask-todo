@@ -3,6 +3,11 @@
 A simple to-do application written in Python using the [Flask web framework](https://flask.palletsprojects.com/en/1.1.x/) and [PostgreSQL](https://www.postgresql.org/).
 
 
+## Instructions
+
+You and a partner will work together to complete the [user stories in the documentation folder](doc/user-stories.md).
+
+
 ## Installation
 
 Fork this repo and use `git clone` to get a copy of your fork on your local machine, then create and activate a virtual environment to install the dependencies.
