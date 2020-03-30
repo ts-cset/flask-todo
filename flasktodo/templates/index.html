@@ -2,4 +2,12 @@
 
 {% block content %}
   <h1>A simple to-do application</h1>
+
+  <ul>
+    {% for todo in todos %}
+      <li class="{{ "completed" if todo['completed'] }}">
+        {{ todo['description'] }}
+      </li>
+    {% endfor %}
+  </ul>
 {% endblock %}

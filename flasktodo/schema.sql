@@ -12,8 +12,9 @@ DROP TABLE IF EXISTS todos;
 
 -- To-Do Items
 CREATE TABLE todos (
-  id bigserial PRIMARY KEY,
-  description varchar(140) NOT NULL,
-  created_at date NOT NULL
-  -- Add Foreign Key to users table here
+    id bigserial PRIMARY KEY,
+    description varchar(140) NOT NULL,
+    completed boolean NOT NULL,
+    created_at timestamp with time zone NOT NULL
+    -- Add Foreign Key to users table here
 );

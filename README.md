@@ -32,6 +32,12 @@ To create the tables, you can run the following command. You'll need to run this
 $ flask init-db
 ```
 
+Mock data is stored in `tests/data.sql` and will be inserted into the test database for every test. If you would like to use the same data when developing, you can run this command to insert it into the development database.
+
+```sh
+$ flask mock-db
+```
+
 ## Running the Application
 
 ```sh
