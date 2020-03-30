@@ -11,8 +11,6 @@
 # Run with the following command in the project's root directory:
 # $ sh bin/create-db.sh
 
-source bin/env.sh
-
 # create user for the application
 psql postgres -c 'CREATE USER flasktodo_user;'
 
