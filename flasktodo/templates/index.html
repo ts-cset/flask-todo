@@ -10,4 +10,10 @@
       </li>
     {% endfor %}
   </ul>
+
+  <form class="todoPrompt" method="post">
+    <label for="todoPrompt">Add a Task</label>
+    <input type="text" name="addTask" value="Ex: Feed Dog" id='addTask' required>
+    <input type="submit" name="addTaskButton" value="Add">
+  </form>
 {% endblock %}

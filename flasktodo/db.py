@@ -65,7 +65,8 @@ def init_db_command():
 def mock_db():
     """Seed the database with mock data."""
 
-    data_filepath = os.path.join(os.path.dirname(__file__), os.pardir, "tests", "data.sql")
+    data_filepath = os.path.join(os.path.dirname(
+        __file__), os.pardir, "tests", "data.sql")
     # open the mock data file and close when done
     with open(data_filepath, "rb") as f:
         with get_db() as con:
@@ -86,4 +87,3 @@ def init_app(app):
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
     app.cli.add_command(mock_db_command)
-
