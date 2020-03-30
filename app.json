@@ -13,5 +13,8 @@
       "quantity": 1,
       "size": "free"
     }
+  },
+  "scripts": {
+    "postdeploy": "export FLASK_APP=flasktodo; flask init-db"
   }
 }
