@@ -1,7 +1,6 @@
 {
   "name": "Flask To-Do",
   "description": "A simple to-do application",
-  "repository": "https://github.com/ts-cset/flask-todo",
   "keywords": ["python", "flask", "postgresql", "heroku"],
   "addons": [{
     "plan": "heroku-postgresql",
