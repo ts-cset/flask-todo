@@ -5,7 +5,10 @@ A simple to-do application written in Python using the [Flask web framework](htt
 
 ## Instructions
 
-You and a partner will work together to complete the [user stories in the documentation folder](doc/user-stories.md).
+You and a partner will work together to complete the [user stories in the documentation folder](doc/user-stories.md). Here are some helpful pieces of documentation:
+
+- [GitHub: Syncing a fork](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork)
+- [Psycopg: Basic Module Usage](https://www.psycopg.org/docs/usage.html)
 
 
 ## Installation
