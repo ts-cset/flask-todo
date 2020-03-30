@@ -3,11 +3,50 @@
 {% block content %}
   <h1>A simple to-do application</h1>
 
-  <ul>
-    {% for todo in todos %}
-      <li class="{{ "completed" if todo['completed'] }}">
-        {{ todo['description'] }}
-      </li>
-    {% endfor %}
-  </ul>
+  <article>
+<!------------------------------------------------------------------->
+    <ul>
+      <h2>Completed</h2>
+      {% for todo in todos %} <!-- for all posts in data base -->
+
+        {% if todo['completed'] %}  <!-- if todo is completed -->
+
+          <li class="{{ "completed" if todo['completed'] }}">
+            {{ todo['description'] }}
+          </li>
+
+        {% endif %}
+
+      {% endfor %}
+    </ul>
+<!------------------------------------------------------------------->
+    <ul>
+    <h2>Uncompleted</h2>
+
+      {% for todo in todos %} <!-- for all posts in data base -->
+
+        {% if not todo['completed'] %} <!-- if todo uncompleted -->
+
+          <li>
+            {{ todo['description'] }}
+          </li>
+
+        {% endif %}
+
+      {% endfor %}
+    </ul>
+<!------------------------------------------------------------------->
+    <ul>
+      <h2>All</h2>
+
+      {% for todo in todos %} <!-- for all posts in data base -->
+
+          <li class="{{ "completed" if todo['completed'] }}">
+            {{ todo['description'] }}
+          </li>
+
+      {% endfor %}
+    </ul>
+<!------------------------------------------------------------------->
+  </article>
 {% endblock %}
