@@ -29,5 +29,8 @@ def create():
          VALUES (%s, %s, %s);
          """,
          (item, False, dt))
-        return redirect(url_for('todos.create'))
+        db.get_db().commit()
+        cur.close()
+
+        return redirect(url_for('todos.index'))
     return render_template('create.html')
