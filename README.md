@@ -5,10 +5,10 @@ A simple to-do application written in Python using the [Flask web framework](htt
 
 ## Instructions
 
-You and a partner will work together to complete the [user stories in the documentation folder](doc/user-stories.md). Here are some helpful pieces of documentation:
+You and a partner will work together to complete the [user stories in the documentation folder](docs/user-stories.md). Here are some helpful pieces of documentation:
 
-- [GitHub: Syncing a fork](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork)
-- [Psycopg: Basic Module Usage](https://www.psycopg.org/docs/usage.html)
+- [GitHub: Syncing a fork](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork) - so you can keep your repo up to date with this one and your partner's
+- [Psycopg: Basic Module Usage](https://www.psycopg.org/docs/usage.html) - to learn how to use the database functions
 
 
 ## Installation
@@ -22,16 +22,17 @@ $ source venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
-Flask's environment variables can be set by running:
-
-```sh
-$ source bin/env.sh
-```
-
 Then you can run the shell script provided to create the database for the application:
 
 ```sh
 $ sh bin/create-db.sh
+```
+
+You need to set environment variables in your terminal session to use any of the following `flask` commands:
+
+```sh
+$ export FLASK_APP=flasktodo
+$ export FLASK_ENV=development
 ```
 
 To create the tables, you can run the following command. You'll need to run this again for any changes to `schema.sql`.
@@ -54,6 +55,21 @@ $ flask run
 ```
 
 You should be able to view the app at [http://localhost:5000]().
+
+
+## Run the Tests
+
+```sh
+$ coverage run -m pytest
+$ coverage report
+```
+
+The first command runs your tests, while the second will show you a report of your total test coverage across all your modules. To generate a more detailed interactive report, run this command and view the result in your browser, which allows you to click on each module and see which lines need to be tested.
+
+```sh
+$ coverage html
+$ open htmlcov/index.html
+```
 
 
 ## Deploy to Heroku
