@@ -13,8 +13,5 @@
       "quantity": 1,
       "size": "free"
     }
-  },
-  "scripts": {
-    "postdeploy": "sh bin/create-db.sh"
   }
 }
