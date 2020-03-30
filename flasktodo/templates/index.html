@@ -3,6 +3,11 @@
 {% block content %}
   <h1>A simple to-do application</h1>
 
+  <form method=post>
+    <input type="text" name="newtask" required>
+    <input type="submit" value="Add Task">
+  </form>
+
   <article>
 <!------------------------------------------------------------------->
     <ul>
@@ -49,4 +54,5 @@
     </ul>
 <!------------------------------------------------------------------->
   </article>
+
 {% endblock %}
