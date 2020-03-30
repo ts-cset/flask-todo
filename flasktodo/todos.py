@@ -23,3 +23,13 @@ def index():
     cur.close()
 
     return render_template("index.html", todos=todos)
+
+
+@bp.route("/<show>")
+def filter(show):
+    cur = db.get_db().cursor()
+    cur.execute('SELECT * FROM todos')
+    todos = cur.fetchall()
+    cur.close()
+
+    return render_template("index.html", todos=todos, show=show)
