@@ -38,11 +38,19 @@ Mock data is stored in `tests/data.sql` and will be inserted into the test datab
 $ flask mock-db
 ```
 
-## Running the Application
+
+## Running the Application Locally
 
 ```sh
 $ flask run
 ```
 
 You should be able to view the app at [http://localhost:5000]().
+
+
+## Deploy to Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+If you've forked this repo, you can deploy your code by clicking the button above.
 

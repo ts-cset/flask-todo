@@ -10,7 +10,7 @@ setuptools.setup(
     author="Zach Fedor",
     author_email="zachfedor@gmail.com",
     url="https://github.com/ts-cset/flask-todo",
-    description="A simple To-Do application",
+    description="A simple to-do application",
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=setuptools.find_packages(),
