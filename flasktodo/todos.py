@@ -1,8 +1,8 @@
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for
+)
 
 from . import db
-import datetime
 
 bp = Blueprint("todos", __name__)
 
@@ -17,7 +17,7 @@ def index():
 
     return render_template("index.html", todos=todos)
 
-@bp.route("/completed", methods=('GET', 'POST'))
+@bp.route("/completed", methods=['GET', 'POST'])
 def completed():
 
 
@@ -30,7 +30,7 @@ def completed():
     return render_template("index.html", todos=todos)
 
 
-@bp.route("uncompleted", methods=('GET'))
+@bp.route("/uncompleted", methods=['GET'])
 def uncompleted():
 
 
