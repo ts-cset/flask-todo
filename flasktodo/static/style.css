@@ -20,8 +20,41 @@ body {
   padding: 2rem;
 }
 
+h1 {
+  color: white;
+  border-bottom: 3px solid orange;
+}
+
 li.completed {
   color: #666666;
   text-decoration: line-through;
 }
 
+section {
+  padding: 50px;
+  background: purple;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+}
+form {
+  background: red;
+  border: black;
+  width: 400px;
+  height: 100px;
+  padding: 10px;
+}
+
+
+
+input {
+  background: green;
+  color: white;
+}
+
+input.textInput {
+  background: white;
+  color:black;
+}

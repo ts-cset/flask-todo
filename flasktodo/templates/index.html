@@ -1,19 +1,52 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<section>
+
   <h1>A simple to-do application</h1>
+
+
+
+
+<form class="filter" method="post" id=filterForm action='/'>
+
+<label for="dropDown">Filter Here:
+
+  <select class="filters" name="dropDown" id="dropDownMenu" required>
+
+    <option value="toDo">ToDo</option>
+    <option value="finished">Completed</option>
+    <option value="allTasks" selected>All Tasks</option>
+
+  </select>
+
+  <input type="submit" name="applyFilter" value="Filter" id="applyFilterButton">
+
+  </label>
+
+</form>
 
   <ul>
     {% for todo in todos %}
+
       <li class="{{ "completed" if todo['completed'] }}">
+
         {{ todo['description'] }}
+
       </li>
     {% endfor %}
+
   </ul>
 
-  <form class="todoPrompt" method="post">
+  <form class="todoPrompt" method="post" action='/addATask'>
+
     <label for="todoPrompt">Add a Task</label>
-    <input type="text" name="addTask" value="Ex: Feed Dog" id='addTask' required>
+
+    <input type="text" name='addTask' value="Ex: Feed Dog" id='addTasks' class='textInput' required>
+
     <input type="submit" name="addTaskButton" value="Add">
+
   </form>
+
+</section>
 {% endblock %}
