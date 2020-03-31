@@ -43,10 +43,16 @@ def index():
 
                 return render_template("index.html", todos=todos)
 
+    cur = db.get_db().cursor()
+    cur.execute('SELECT * FROM todos')
+    todos = cur.fetchall()
+    cur.close()
+    return render_template("index.html", todos=todos)
+
 
 @bp.route('/addATask', methods=('GET', 'POST'))
 def adding_A_Task():
-
+    """Adding a task function so the user can update their to-dos"""
     if request.method == 'POST':
         # get the database connection
         with db.get_db() as con:
