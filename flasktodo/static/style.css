@@ -25,3 +25,8 @@ li.completed {
   text-decoration: line-through;
 }
 
+div.filter {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}

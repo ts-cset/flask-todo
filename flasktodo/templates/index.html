@@ -2,7 +2,10 @@
 
 {% block content %}
   <h1>A simple to-do application</h1>
-
+  <div class="filter">
+        <li><a href="{{ url_for('todos.completed') }}">Completed</a></li>
+        <li><a href="{{ url_for('todos.uncompleted') }}">Uncompleted</a></li>
+        <li><a href="/">All</a></li>
   <ul>
     {% for todo in todos %}
       <li class="{{ "completed" if todo['completed'] }}">
