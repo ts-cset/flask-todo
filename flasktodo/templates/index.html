@@ -10,6 +10,7 @@
     {% for todo in todos %}
       <li class="{{ "completed" if todo['completed'] }}">
         {{ todo['description'] }}
+        <a class='action' href="{{ url_for('todos.done', id=todo['id']) }}">Done</a>
       </li>
     {% endfor %}
   </ul>
