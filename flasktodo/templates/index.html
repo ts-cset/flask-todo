@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>A simple to-do application</h1>
+  <h1>To-do's</h1>
 
   <form method=post>
     <input type="text" name="newtask" required>
@@ -9,26 +9,38 @@
   </form>
 
  <section>
-    <ul>
-      <li><a href="{{ url_for('todos.filter', show='All') }}" >All</a></li>
-      <li><a href="{{ url_for('todos.filter', show='Completed') }}" >Completed</a></li>
-      <li><a href="{{ url_for('todos.filter', show='Uncompleted') }}" >Uncompleted</a></li>
+    <ul class='filter'>
+
+      <li>
+        <a href="{{ url_for('todos.filter', show='All') }}" >All</a>
+      </li>
+
+      <li>
+        <a href="{{ url_for('todos.filter', show='Completed') }}" >Completed</a>
+      </li>
+
+      <li>
+        <a href="{{ url_for('todos.filter', show='Uncompleted') }}" >Uncompleted</a>
+      </li>
+
     </ul>
   </section>
 
-  <article>
+  <article class='todos'>
 <!------------------------------------------------------------------->
-    <ul>
-      <h2>{{ filter }}</h2>
 
+      <h2>{{ filter }}</h2>
+      <ul>
       {% for todo in todos %} <!-- for all posts in data base -->
 
-          <li class="{{ "completed" if todo['completed'] }}">
+          <li class="{{ "completed" if todo['completed'] }}"> <!-- cross out if completed -->
             {{ todo['description'] }}
           </li>
 
       {% endfor %}
-    </ul>
+      </ul>
+
 <!------------------------------------------------------------------->
 </article>
+
 {% endblock %}

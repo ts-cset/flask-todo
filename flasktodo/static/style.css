@@ -14,7 +14,6 @@ body {
   display: flex;
   flex-direction: column;
   font-family: Helvetica, Arial, sans-serif;
-  justify-content: center;
   margin: 0;
   min-height: 100vh;
   padding: 2rem;
@@ -25,3 +24,24 @@ li.completed {
   text-decoration: line-through;
 }
 
+/** filter buttons **/
+.filter {
+  display: flex;
+  justify-content: space-between;
+  width: 15em;
+}
+
+.filter li {
+  text-decoration: none;
+  list-style: none;
+}
+
+.todos {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.todos.li{
+  align-items: flex-end;
+}

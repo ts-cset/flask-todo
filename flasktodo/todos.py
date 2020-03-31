@@ -29,7 +29,7 @@ def index():
 def filter(show):
 
     cur = db.get_db().cursor()
-    
+
     if show == 'Completed':
         cur.execute('SELECT * FROM todos WHERE completed = TRUE')
         todos = cur.fetchall()
