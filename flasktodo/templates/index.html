@@ -18,44 +18,8 @@
 
   <article>
 <!------------------------------------------------------------------->
-  {% if show == "Completed" %}
     <ul>
-      <h2>Completed</h2>
-
-      {% for todo in todos %} <!-- for all posts in data base -->
-
-        {% if todo['completed'] %}  <!-- if todo is completed -->
-
-          <li class="{{ "completed" if todo['completed'] }}">
-            {{ todo['description'] }}
-          </li>
-
-        {% endif %}
-      {% endfor %}
-    </ul>
-  {% endif %}
-<!------------------------------------------------------------------->
-{% if show == "Uncompleted" %}
-    <ul>
-    <h2>Uncompleted</h2>
-
-      {% for todo in todos %} <!-- for all posts in data base -->
-
-        {% if not todo['completed'] %} <!-- if todo uncompleted -->
-
-          <li>
-            {{ todo['description'] }}
-          </li>
-
-        {% endif %}
-
-      {% endfor %}
-    </ul>
-  {% endif %}
-<!------------------------------------------------------------------->
-{% if show == "All" %}
-    <ul>
-      <h2>All</h2>
+      <h2>{{ filter }}</h2>
 
       {% for todo in todos %} <!-- for all posts in data base -->
 
@@ -65,8 +29,6 @@
 
       {% endfor %}
     </ul>
-  {% endif %}
 <!------------------------------------------------------------------->
-  </article>
-
+</article>
 {% endblock %}
