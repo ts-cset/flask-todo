@@ -8,8 +8,16 @@
 
     <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}" type="text/css" />
   </head>
+
   <body>
-    {% block content %}
-    {% endblock %}
+
+    <main><!--Template extender for all routes in application-->
+
+      {% block content %}<!--All the content of pages here-->
+      {% endblock %}
+
+    </main>
+
   </body>
+
 </html>

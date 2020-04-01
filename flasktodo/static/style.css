@@ -20,6 +20,8 @@ body {
   padding: 2rem;
 }
 
+
+
 h1 {
   color: white;
   border-bottom: 3px solid orange;
@@ -30,6 +32,27 @@ li.completed {
   text-decoration: line-through;
 }
 
+li {
+flex-direction: column;
+justify-content: center;
+align-items: center;
+align-self: center;
+padding: 10px;
+}
+
+/*Styles only apply to forms
+in the li*/
+form.smallButton {
+  height: 100px;
+  width: 200px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+}
+
+
 article, section {
   padding: 50px;
   background: purple;
@@ -38,7 +61,10 @@ article, section {
   align-items: center;
   align-self: center;
   justify-content: center;
+  max-width: 900px;
+  margin: auto;
 }
+
 form {
   background: red;
   border: black;
@@ -66,15 +92,9 @@ ul {
   font-size: 30pt;
 }
 
+
 input.textInput {
   background: white;
   font-size: 20pt;
   color:black;
-}
-
-form.smallButton {
-  background: red;
-  border: black;
-  width: 200px;
-  height: 100px;
 }

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<article class="">
+<article><!--Start of article-->
 
 
 
@@ -10,11 +10,11 @@
 
 
 
-<form class="filter" method="post" id=filterForm action='/'>
+<form  method="post"  action='/'>
 
 <label for="dropDown">Filter Here:
 
-  <select class="filters" name="dropDown" id="dropDownMenu" required>
+  <select  name="dropDown" required>
 
     <option value="toDo">ToDo</option>
     <option value="finished">Completed</option>
@@ -22,47 +22,57 @@
 
   </select>
 
-  <input type="submit" name="applyFilter" value="Filter" id="applyFilterButton">
+  <input type="submit" name="applyFilter" value="Filter" >
 
   </label>
 
 </form>
 
+<section><!--Start of ul section-->
+
   <ul>
+
     {% for todo in todos %}
-<section>
 
 
       <li class="{{ "completed" if todo['completed'] }}">
 
         {{ todo['description'] }}
 
-        <form class="smallButton" action="/Delete" method="post">
-          <button class="deleteButton" type="submit" name="deleteButton" value="{{ todo['id'] }}">Delete</button>
+
+        <!--Form for delete feature-->
+        <form action="/Delete" method="post" class='smallButton'>
+          <button  type="submit" name="deleteButton" value="{{ todo['id'] }}">Delete</button>
         </form>
 
-        {% if not todo['completed'] %}
+        {% if not todo['completed'] %}<!--Only runs if the completed field is not completed-->
 
-        <form class="smallButton" action="/Done" method="post">
-            <button class="doneButton" type="submit" name="doneButton" value="{{ todo['id'] }}">Complete</button>
+        <!--Form for completed feature-->
+        <form  action="/Done" method="post" class='smallButton'>
+            <button  type="submit" name="doneButton" value="{{ todo['id'] }}">Complete</button>
         </form>
 
-        <form class="smallButton" action="/Edit" method="post">
+        <!--Form for the edit feature -->
+        <form action="/Edit" method="post" class='smallButton'>
+          <button type="submit"  name="EditButton" value="{{ todo['id'] }}">Edit</button>
           <input type="text" name="EditDesc" value="Edit Here"required>
-          <button type="submit" class='EditButton'  name="EditButton" value="{{ todo['id'] }}">Edit</button>
         </form>
 
-        {% endif %}
+
+        {% endif %}<!--End of  if not completed if-->
 
       </li>
 
-</section>
+
 
 
     {% endfor %}
 
   </ul>
 
+</section><!--End of ul section-->
+
+<!--Form for adding a task to the list-->
   <form class="todoPrompt" method="post" action='/addATask'>
 
     <label for="todoPrompt">Add a Task</label>
@@ -73,5 +83,5 @@
 
   </form>
 
-</article>
+</article><!--End of the article-->
 {% endblock %}
