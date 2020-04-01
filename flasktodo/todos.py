@@ -43,14 +43,14 @@ def uncompleted():
     return render_template("index.html", todos=todos)
 
 
-@bp.route("/<init:id>/done", methods=('GET', 'POST'))
+@bp.route("/<int:id>/done", methods=('POST' ,))
 def done(id):
     """This sets a task to completed"""
     cur = db.get_db().cursor()
 
     # Update the individual task and sets it to complete
     cur.execute(
-        'UPDATE todos SET complete = True'
+        'UPDATE todos SET completed = True'
         ' WHERE id= %s ',
         (id,)
     )
