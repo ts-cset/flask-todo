@@ -34,9 +34,9 @@
         {{ todo['description'] }}
 
         {% if not todo['completed'] %}
-          <form class="EditForm" action="/Edit" method="post">
+          <form class="EditButton" action="/Edit" method="post">
             <input type="text" name="EditDesc" value="Edit Here"required>
-            <button type="button" class='EditButton'  name="EditButton" value="{{ todo['id'] }}">Edit</button>
+            <button type="submit" class='EditButton'  name="EditButton" value="{{ todo['id'] }}">Edit</button>
           </form>
         {% endif %}
       </li>
