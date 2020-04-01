@@ -85,6 +85,21 @@ def Editing_feature():
             # Begin the transaction
             with con.cursor() as cur:
                 # the variable EditDesc is equal to the form data of EditForm
-                EditDesc = request.form['EditForm']
+                EditDesc = request.form['EditDesc']
+                EditId = request.form['EditButton']
+
                 # Changes the description the user filled into the form using SQL
-                cur.execute("""""")
+                cur.execute(""" UPDATE todos
+                            SET description = %s
+                            WHERE id = %s
+                            """,
+                            (EditDesc, EditId,))
+                con.commit()
+
+    # Displays all the to-dos on the index.html
+    cur = db.get_db().cursor()
+    cur.execute('SELECT * FROM todos')
+    todos = cur.fetchall()
+    cur.close()
+
+    return render_template("index.html", todos=todos)

@@ -8,7 +8,7 @@
 
 
 
-<form class="filter" method="post" id=filterForm action='/'>
+<form class="filter" method="post" id='filterForm' action='/'>
 
 <label for="dropDown">Filter Here:
 
@@ -29,11 +29,19 @@
   <ul>
     {% for todo in todos %}
 
-      <li class="{{ "completed" if todo['completed'] }}">
+      <li class="{{ "completed" if todo['completed'] }}" >
 
         {{ todo['description'] }}
 
       </li>
+
+      {% if todo['completed'] == False  %}
+      <form class="UpdateDescriptionForm" action="/Edit" method="post">
+          <input type="text" name="EditDesc" value="Update"  required >
+          <button type="button" name="EditButton" value="{{ todo['id'] }}">Update</button>
+      </form>
+      {% endif %}
+
     {% endfor %}
 
   </ul>
