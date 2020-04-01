@@ -33,7 +33,15 @@
 
         {{ todo['description'] }}
 
+        {% if not todo['completed'] %}
+        <form class="doneButton" action="/Done" method="post">
+            <button class="doneButton" type="submit" name="doneButton" value="{{ todo['id'] }}">Completed</button>
+        </form>
+        {% endif %}
+
       </li>
+
+
     {% endfor %}
 
   </ul>

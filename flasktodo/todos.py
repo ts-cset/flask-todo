@@ -66,8 +66,34 @@ def adding_A_Task():
                 """,
                             (addTask, False)
                             )
-
+                con.commit()
     # Displays all the to-dos on the index.html
+    cur = db.get_db().cursor()
+    cur.execute('SELECT * FROM todos')
+    todos = cur.fetchall()
+    cur.close()
+
+    return render_template("index.html", todos=todos)
+
+
+@bp.route('/Done', methods=('GET', 'POST'))
+def task_is_done():
+    """Marking a Task as completed so the user knows they are done"""
+    if request.method == 'POST':
+        # get the databse connection
+        with db.get_db() as con:
+            # Begin the transaction
+            with con.cursor() as cur:
+
+                doneTask = request.form["doneButton"]
+
+                cur.execute(""" UPDATE todos
+                            SET completed = True
+                            WHERE id = %s""",
+                            (doneTask,)
+                            )
+                con.commit()
+
     cur = db.get_db().cursor()
     cur.execute('SELECT * FROM todos')
     todos = cur.fetchall()
