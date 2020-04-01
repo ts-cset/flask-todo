@@ -27,3 +27,10 @@ def test_todo_filter(client):
     assert b'All Tasks' in response.data
     assert b'Completed' in response.data
     assert b'ToDo' in response.data
+
+
+def test_todo_make_completed():
+    response = client.get('/Done')
+    assert b'<h1>A Simple To-do Application</h1>' in response.data
+    assert b'/Done' in response.data
+    assert b'Filter Here' in response.data

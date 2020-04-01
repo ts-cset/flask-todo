@@ -53,9 +53,9 @@ height: 75px;
 font-size: 20pt;
 }
 
-input {
-  width: 200px;
-  height: 75px;
+input, button {
+  width: 150px;
+  height: 50px;
   font-size: 20pt;
   background: green;
   color: white;
@@ -70,4 +70,12 @@ input.textInput {
   background: white;
   font-size: 20pt;
   color:black;
+}
+
+form.doneButton {
+  background: red;
+  border: black;
+  width: 200px;
+  height: 75px;
+  padding: 10px;
 }
