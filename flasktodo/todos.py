@@ -100,3 +100,32 @@ def task_is_done():
     cur.close()
 
     return render_template("index.html", todos=todos)
+
+
+@bp.route('/Edit', methods=('GET', 'POST'))
+def Editing_feature():
+    """So the user can change the description of a To Do item"""
+    if request.method == 'POST':
+        # get the database connection
+        with db.get_db() as con:
+            # Begin the transaction
+            with con.cursor() as cur:
+                # the variable EditDesc is equal to the form data of EditForm
+                EditDesc = request.form['EditDesc']
+                EditId = request.form['EditButton']
+
+                # Changes the description the user filled into the form using SQL
+                cur.execute(""" UPDATE todos
+                            SET description = %s
+                            WHERE id = %s
+                            """,
+                            (EditDesc, EditId,))
+                con.commit()
+
+    # Displays all the to-dos on the index.html
+    cur = db.get_db().cursor()
+    cur.execute('SELECT * FROM todos')
+    todos = cur.fetchall()
+    cur.close()
+
+    return render_template("index.html", todos=todos)

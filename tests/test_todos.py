@@ -29,8 +29,21 @@ def test_todo_filter(client):
     assert b'ToDo' in response.data
 
 
+<<<<<<< HEAD
 def test_todo_make_completed():
     response = client.get('/Done')
     assert b'<h1>A Simple To-do Application</h1>' in response.data
     assert b'/Done' in response.data
     assert b'Filter Here' in response.data
+=======
+def test_edit_page(client):
+    response = client.get('/Edit')
+    assert b'Edit Page' in response.data
+    assert b'for todo in todos' in response.data
+    assert b'delete' in response.data
+    assert b'Edit' in response.data
+
+
+def test_delete_feature(client):
+    assert b'Delete' in response.data
+>>>>>>> edit-feature
