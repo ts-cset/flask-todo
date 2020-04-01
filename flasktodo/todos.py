@@ -67,6 +67,7 @@ def adding_A_Task():
                             (addTask, False)
                             )
                 con.commit()
+
     # Displays all the to-dos on the index.html
     cur = db.get_db().cursor()
     cur.execute('SELECT * FROM todos')
@@ -94,6 +95,7 @@ def task_is_done():
                             )
                 con.commit()
 
+    # Displays all the to-dos on the index.html
     cur = db.get_db().cursor()
     cur.execute('SELECT * FROM todos')
     todos = cur.fetchall()
@@ -103,7 +105,7 @@ def task_is_done():
 
 
 @bp.route('/Edit', methods=('GET', 'POST'))
-def Editing_feature():
+def editing_feature():
     """So the user can change the description of a To Do item"""
     if request.method == 'POST':
         # get the database connection
@@ -129,3 +131,31 @@ def Editing_feature():
     cur.close()
 
     return render_template("index.html", todos=todos)
+
+
+@bp.route('/Delete', methods=('GET', 'POST'))
+def delete_feature():
+    """So the user can delete a post that takes up space"""
+
+    if request.method == 'POST':
+        # get the database connection
+        with db.get_db() as con:
+            # Begin the transaction
+            with con.cursor() as cur:
+                # deleteTask variable is equal to the form of delete button
+                deleteTask = request.form['deleteButton']
+
+                # Changes the table so the task is removed from the table
+                cur.execute(""" DELETE FROM todos WHERE id = %s
+                """,
+                            (deleteTask,)
+                            )
+                con.commit()
+
+        # Displays all the to-dos on the index.html
+        cur = db.get_db().cursor()
+        cur.execute('SELECT * FROM todos')
+        todos = cur.fetchall()
+        cur.close()
+
+        return render_template("index.html", todos=todos)

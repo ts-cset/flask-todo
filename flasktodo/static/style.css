@@ -30,7 +30,7 @@ li.completed {
   text-decoration: line-through;
 }
 
-section {
+article, section {
   padding: 50px;
   background: purple;
   display: flex;
@@ -72,10 +72,9 @@ input.textInput {
   color:black;
 }
 
-form.doneButton {
+form.smallButton {
   background: red;
   border: black;
   width: 200px;
-  height: 75px;
-  padding: 10px;
+  height: 100px;
 }
