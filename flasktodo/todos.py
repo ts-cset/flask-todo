@@ -74,3 +74,17 @@ def adding_A_Task():
     cur.close()
 
     return render_template("index.html", todos=todos)
+
+
+@bp.route('/Edit', methods=('GET', 'POST'))
+def Editing_feature():
+    """So the user can change the description of a To Do item"""
+    if request.method == 'POST':
+        # get the database connection
+        with db.get_db() as con:
+            # Begin the transaction
+            with con.cursor() as cur:
+                # the variable EditDesc is equal to the form data of EditForm
+                EditDesc = request.form['EditForm']
+                # Changes the description the user filled into the form using SQL
+                cur.execute("""""")
