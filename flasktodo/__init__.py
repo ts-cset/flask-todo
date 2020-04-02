@@ -2,6 +2,7 @@ import os
 
 from flask import Flask
 
+
 def create_app(test_config=None):
     """Factory to configure and return a Flask application.
 
@@ -46,6 +47,11 @@ def create_app(test_config=None):
     from . import todos
     app.register_blueprint(todos.bp)
 
+    # For logining in and Registration
+    # of users
+    # ---------------
+    from . import auth
+    app.register_blueprint(auth.bp)
+
     # Return application object to be used by a WSGI server, like gunicorn
     return app
-
