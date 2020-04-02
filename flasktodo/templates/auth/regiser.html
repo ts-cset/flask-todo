@@ -1,0 +1,22 @@
+{% extends base.html %}
+
+{% block content %}
+
+<h1>Welcome to "A Simple To-do" Application</h1>
+
+<h2>To Regiser fill out the forms below.</h2>
+
+<section class='reg'>
+
+  <form class="loginForm" action="/" method="post">
+  <input type="text" name="emailInput" value="Example@email.com" required>
+  <input type="text" name="passInput" value="Password Here" required>
+  <button type="button" name="button">Log In</button>
+  </form>
+
+  <h3>Already a user?</h3>
+
+<a href="{{ url_for( login.html )}}">Click here to log in</a>
+
+</section>
+{% endblock %}

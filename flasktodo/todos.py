@@ -4,16 +4,14 @@ from . import db
 import psycopg2
 import psycopg2.extras
 
-
 bp = Blueprint("todos", __name__)
 
 
-@bp.route("/", methods=('GET', 'POST'))
+@bp.route("/Filter", methods=('GET', 'POST'))
 def index():
     """View for home page which shows list of to-do items."""
 
     if request.method == 'POST':
-        # the variable filterFeature is equeal to the from data on filterForm
         # get the database connection
         with db.get_db() as con:
             # Begin the transaction
@@ -51,6 +49,7 @@ def index():
 
 
 @bp.route('/addATask', methods=('GET', 'POST'))
+# @login.required
 def adding_A_Task():
     """Adding a task function so the user can update their to-dos"""
     if request.method == 'POST':
@@ -78,6 +77,7 @@ def adding_A_Task():
 
 
 @bp.route('/Done', methods=('GET', 'POST'))
+# @login.required
 def task_is_done():
     """Marking a Task as completed so the user knows they are done"""
     if request.method == 'POST':
@@ -105,6 +105,7 @@ def task_is_done():
 
 
 @bp.route('/Edit', methods=('GET', 'POST'))
+# @login.required
 def editing_feature():
     """So the user can change the description of a To Do item"""
     if request.method == 'POST':
@@ -134,6 +135,7 @@ def editing_feature():
 
 
 @bp.route('/Delete', methods=('GET', 'POST'))
+# @login.required
 def delete_feature():
     """So the user can delete a post that takes up space"""
 
