@@ -132,7 +132,6 @@ def editing_feature():
 
     return render_template("index.html", todos=todos)
 
-
 @bp.route('/Delete', methods=('GET', 'POST'))
 def delete_feature():
     """So the user can delete a post that takes up space"""

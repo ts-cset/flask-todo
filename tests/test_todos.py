@@ -71,9 +71,17 @@ def test_edit_page(client):
     # Testing to see if the edit succeded
     assert b'get the groceries' in response.data
 
+def test_redo_task(client):
+    response = client.get('/RedoTask')
+    assert b'Redo Task' in response.data
+
+    #Updateing a task so it can be "uncompleted"
+    response = client.post('/RedoTask', data={'RedoButton': 2 })
+    #Checking if task was updated
+    assert b'do homework' in response.data
+    assert response.data.count(b'<li class="">') == 3
 
 # Testing the delete feature at /Delete
-
 def test_delete_page(client):
     response = client.get('/')
     assert b'<h1>A Simple To-do Application</h1>' in response.data
