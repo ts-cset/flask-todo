@@ -9,7 +9,7 @@
 
 
 
-
+<!--Fliters baised on task type-->
 <form  method="post"  action='/'>
 
 <label for="dropDown">Filter Here:
@@ -39,18 +39,10 @@
 
         {{ todo['description'] }}
 
+        <div class="buttons">
 
-        <!--Form for delete feature-->
-        <form action="/Delete" method="post" class='smallButton'>
-          <button  type="submit" name="deleteButton" value="{{ todo['id'] }}">Delete</button>
-        </form>
 
-        {% if not todo['completed'] %}<!--Only runs if the completed field is not completed-->
-
-        <!--Form for completed feature-->
-        <form  action="/Done" method="post" class='smallButton'>
-            <button  type="submit" name="doneButton" value="{{ todo['id'] }}">Complete</button>
-        </form>
+        {% if not todo['completed'] %}
 
         <!--Form for the edit feature -->
         <form action="/Edit" method="post" class='smallButton'>
@@ -58,10 +50,36 @@
           <input type="text" name="EditDesc" value="Edit Here"required>
         </form>
 
+        <!--Form for completed feature-->
+        <form  action="/Done" method="post" class='smallButton'>
+            <button  type="submit" name="doneButton" value="{{ todo['id'] }}">Complete</button>
+        </form>
 
-        {% endif %}<!--End of  if not completed if-->
+
+
+
+        {% endif %}
+
+        <!--Form for delete feature-->
+        <form action="/Delete" method="post" class='smallButton'>
+          <button  type="submit" name="deleteButton" value="{{ todo['id'] }}">Delete</button>
+        </form>
+
+        {% if todo['completed'] %}
+        <!--Form for redoing a task-->
+        <form  action="/Redo" method="post" class='smallButton'>
+          <button type="submit" name="redoTask" value="{{ todo['id'] }}">Redo Task</button>
+        </form>
+
+        {% endif %}
+
+        </div>
 
       </li>
+
+      {% if not loop.last %}
+      <hr>
+      {% endif %}
 
 
 

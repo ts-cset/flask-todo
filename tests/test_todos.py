@@ -39,17 +39,13 @@ def test_todo_addtions_feature(client):
 # Tests if each filter option shows appropriate values
 def test_todo_filter(value, amount, amount2, client):
 
-    the_amount = int(amount)
-
-    the_amount2 = int(amount2)
-
     response = client.get('/')
 
     response = client.post('/', data={'dropDown': value })
 
-    assert response.data.count(b'<li class="">') == the_amount
+    assert response.data.count(b'<li class="">') == amount
 
-    assert response.data.count(b'<li class="completed">') == the_amount2
+    assert response.data.count(b'<li class="completed">') == amount2
 
 
 
