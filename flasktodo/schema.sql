@@ -7,7 +7,6 @@
 -- Drop existing tables
 DROP TABLE IF EXISTS todos;
 -- Add query to drop users table here
-
 -- Add query to create users table here
 
 -- To-Do Items

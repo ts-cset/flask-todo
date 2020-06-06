@@ -81,7 +81,7 @@ def adding_A_Task():
 def task_is_done():
     """Marking a Task as completed so the user knows they are done"""
     if request.method == 'POST':
-        # get the databse connection
+        # get the database connection
         with db.get_db() as con:
             # Begin the transaction
             with con.cursor() as cur:
