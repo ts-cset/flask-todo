@@ -7,6 +7,13 @@ import psycopg2.extras
 
 bp = Blueprint("todos", __name__)
 
+def display_todos():
+    # Displays all the to-dos on the index.html
+    cur = db.get_db().cursor()
+    cur.execute('SELECT * FROM todos')
+    todos = cur.fetchall()
+    cur.close()
+    return todos
 
 @bp.route("/", methods=('GET', 'POST'))
 def index():
@@ -37,18 +44,13 @@ def index():
                 # code only runs if the request is addTasks
                 if filterFeature == 'allTasks':
                     # Displays all the to-dos on the index.html
-                    cur.execute('SELECT * FROM todos')
-                    todos = cur.fetchall()
-                    cur.close()
+                    todos = display_todos()
 
                 return render_template("index.html", todos=todos)
 
-    cur = db.get_db().cursor()
-    cur.execute('SELECT * FROM todos')
-    todos = cur.fetchall()
-    cur.close()
-    return render_template("index.html", todos=todos)
+    todos = display_todos()
 
+    return render_template("index.html", todos=todos)
 
 @bp.route('/addATask', methods=('GET', 'POST'))
 def adding_A_Task():
@@ -68,14 +70,9 @@ def adding_A_Task():
                             )
                 con.commit()
 
-    # Displays all the to-dos on the index.html
-    cur = db.get_db().cursor()
-    cur.execute('SELECT * FROM todos')
-    todos = cur.fetchall()
-    cur.close()
+    todos = display_todos()
 
     return render_template("index.html", todos=todos)
-
 
 @bp.route('/Done', methods=('GET', 'POST'))
 def task_is_done():
@@ -95,14 +92,9 @@ def task_is_done():
                             )
                 con.commit()
 
-    # Displays all the to-dos on the index.html
-    cur = db.get_db().cursor()
-    cur.execute('SELECT * FROM todos')
-    todos = cur.fetchall()
-    cur.close()
+    todos = display_todos()
 
     return render_template("index.html", todos=todos)
-
 
 @bp.route('/Edit', methods=('GET', 'POST'))
 def editing_feature():
@@ -124,11 +116,31 @@ def editing_feature():
                             (EditDesc, EditId,))
                 con.commit()
 
+    todos = display_todos()
+
+    return render_template("index.html", todos=todos)
+
+@bp.route('/RedoTask', methods=('GET', 'POST'))
+def redo_a_task():
+    """Allows the user to unfinish a task
+    so they can complete it again"""
+    if request.method == 'POST':
+        # get the database connection
+        with db.get_db() as con:
+            # Begin the transaction
+            with con.cursor() as cur:
+                redo = request.form['redoTask']
+
+                #Updates the table so the task is now "uncompleted"
+                cur.execute("""UPDATE todos
+                            SET completed = False
+                            WHERE id = %s""",
+                            (redo, )
+                            )
+                con.commit()
+
     # Displays all the to-dos on the index.html
-    cur = db.get_db().cursor()
-    cur.execute('SELECT * FROM todos')
-    todos = cur.fetchall()
-    cur.close()
+    todos = display_todos()
 
     return render_template("index.html", todos=todos)
 
@@ -141,7 +153,7 @@ def delete_feature():
         with db.get_db() as con:
             # Begin the transaction
             with con.cursor() as cur:
-                # deleteTask variable is equal to the form of delete button
+
                 deleteTask = request.form['deleteButton']
 
                 # Changes the table so the task is removed from the table
@@ -151,10 +163,6 @@ def delete_feature():
                             )
                 con.commit()
 
-        # Displays all the to-dos on the index.html
-        cur = db.get_db().cursor()
-        cur.execute('SELECT * FROM todos')
-        todos = cur.fetchall()
-        cur.close()
+    todos = display_todos()
 
-        return render_template("index.html", todos=todos)
+    return render_template("index.html", todos=todos)

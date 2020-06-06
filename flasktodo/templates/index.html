@@ -67,7 +67,7 @@
 
         {% if todo['completed'] %}
         <!--Form for redoing a task-->
-        <form  action="/Redo" method="post" class='smallButton'>
+        <form  action="/RedoTask" method="post" class='smallButton'>
           <button type="submit" name="redoTask" value="{{ todo['id'] }}">Redo Task</button>
         </form>
 
